@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeHaven HQ — Premium Rentals in Riyadh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F8F4EE;
+    --ink: #1A1714;
+    --gold: #B8975A;
+    --gold-light: #D4B47A;
+    --muted: #7A7268;
+    --border: #E4DDD3;
+    --white: #FFFFFF;
+    --card-bg: #FDFAF6;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body[lang="ar"] {
+    font-family: 'Noto Naskh Arabic', serif;
+    direction: rtl;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+    background: rgba(248, 244, 238, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .logo-mark svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--gold);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-text span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+
+  .logo-text span:last-child {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+
+  .hero-left {
+    padding: 8% 5% 8% 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  body[lang="ar"] .hero-eyebrow::before { display: none; }
+  body[lang="ar"] .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--ink);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 420px;
+    margin-bottom: 44px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    padding: 14px 36px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s;
+    font-weight: 500;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold); }
+
+  .btn-secondary {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--gold); }
+
+  .btn-secondary svg { width: 16px; height: 16px; }
+
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 56px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-item {}
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #1A1714;
+  }
+
+  .hero-img-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    gap: 2px;
+  }
+
+  .hero-img-item {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-img-item:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .hero-img-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .hero-img-item:hover img { transform: scale(1.04); }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    background: rgba(26,23,20,0.85);
+    backdrop-filter: blur(8px);
+    padding: 14px 20px;
+    color: var(--white);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-left: 2px solid var(--gold);
+  }
+
+  /* ─── SECTION COMMON ─── */
+  section { padding: 96px 8%; }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  body[lang="ar"] .section-tag::before { display: none; }
+  body[lang="ar"] .section-tag::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.8;
+  }
+
+  /* ─── LISTINGS ─── */
+  #listings { background: var(--white); }
+
+  .listings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 8px 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+  }
+
+  /* ─── LISTING CARD ─── */
+  .listing-card {
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+    overflow: hidden;
+  }
+
+  .listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(26,23,20,0.1);
+  }
+
+  .card-img {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: #E8E0D5;
+  }
+
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .listing-card:hover .card-img img { transform: scale(1.06); }
+
+  .card-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    font-weight: 500;
+  }
+
+  body[lang="ar"] .card-badge { left: auto; right: 16px; }
+
+  .card-body {
+    padding: 24px 24px 20px;
+  }
+
+  .card-type {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .card-location {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 16px;
+  }
+
+  .card-location svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  .card-specs {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+  }
+
+  .spec {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .spec svg { width: 13px; height: 13px; }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .card-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .card-cta {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+    transition: gap 0.2s;
+  }
+
+  .card-cta:hover { gap: 10px; }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(26,23,20,0.7);
+    z-index: 200;
+    backdrop-filter: blur(4px);
+    overflow-y: auto;
+    padding: 40px 20px;
+  }
+
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .modal {
+    background: var(--white);
+    width: 100%;
+    max-width: 860px;
+    position: relative;
+    animation: modalIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s;
+  }
+
+  body[lang="ar"] .modal-close { right: auto; left: 20px; }
+
+  .modal-close:hover { background: var(--ink); }
+  .modal-close:hover svg { stroke: var(--white); }
+  .modal-close svg { width: 16px; height: 16px; stroke: var(--ink); }
+
+  .modal-gallery {
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+    background: #1A1714;
+  }
+
+  .modal-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .modal-body {
+    padding: 40px 44px;
+  }
+
+  .modal-type {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .modal-loc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .modal-specs {
+    display: flex;
+    gap: 28px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .modal-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .modal-spec-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .modal-spec-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .modal-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 36px;
+  }
+
+  .modal-contact {
+    background: var(--ink);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .modal-contact-text {}
+
+  .modal-contact-text p:first-child {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .modal-contact-text p:last-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    color: var(--white);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+
+  .modal-contact-btn {
+    background: var(--gold);
+    color: var(--white);
+    padding: 14px 32px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .modal-contact-btn:hover { background: #9E7E44; }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--ink);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  #about .section-tag { color: var(--gold-light); }
+  #about .section-tag::before { background: var(--gold-light); }
+
+  #about .section-title { color: var(--white); }
+
+  #about .section-sub { color: rgba(255,255,255,0.6); max-width: 460px; }
+
+  .about-features {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .about-feat {
+    padding: 22px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.2s;
+  }
+
+  .about-feat:hover { border-color: var(--gold); }
+
+  .about-feat-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 12px;
+    fill: var(--gold);
+  }
+
+  .about-feat h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .about-feat p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  .about-right {
+    position: relative;
+  }
+
+  .about-img-stack {
+    position: relative;
+    height: 520px;
+  }
+
+  .about-img-main {
+    position: absolute;
+    inset: 0 40px 40px 0;
+    overflow: hidden;
+  }
+
+  .about-img-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-img-accent {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 55%;
+    height: 45%;
+    overflow: hidden;
+    border: 4px solid var(--ink);
+  }
+
+  .about-img-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about-years {
+    position: absolute;
+    top: 28px;
+    left: -28px;
+    background: var(--gold);
+    padding: 22px 26px;
+    text-align: center;
+  }
+
+  .about-years-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .about-years-text {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+  }
+
+  /* ─── PROCESS ─── */
+  #process { background: var(--cream); }
+
+  .process-header { margin-bottom: 64px; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 16.5%;
+    right: 16.5%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .process-step {
+    padding: 0 32px;
+    text-align: center;
+  }
+
+  .step-num {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--gold);
+    background: var(--cream);
+    position: relative;
+    z-index: 1;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .process-step:hover .step-num {
+    background: var(--gold);
+    color: var(--white);
+    border-color: var(--gold);
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-info {}
+
+  .contact-detail {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-detail:first-of-type { margin-top: 48px; border-top: none; padding-top: 0; }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 18px; height: 18px; stroke: var(--gold); }
+
+  .contact-detail-text h4 {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-detail-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .contact-detail-text a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-detail-text a:hover { color: var(--gold); }
+
+  .contact-map-placeholder {
+    background: #EAE4DA;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+  }
+
+  .contact-map-placeholder svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--gold);
+    fill: none;
+    margin-bottom: 6px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    padding: 56px 8% 36px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+  }
+
+  .footer-brand .logo-text span:first-child { color: var(--white); }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-domain {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { height: 50vw; min-height: 300px; }
+    #about { grid-template-columns: 1fr; }
+    .about-right { display: none; }
+    #contact { grid-template-columns: 1fr; }
+    .contact-map-placeholder { display: none; }
+    .process-steps { grid-template-columns: 1fr; gap: 32px; }
+    .process-steps::before { display: none; }
+    .nav-links { display: none; }
+    .about-features { grid-template-columns: 1fr; }
+  }
+
+  /* ─── HIDDEN LANG ELEMENTS ─── */
+  [data-lang="ar"] { display: none; }
+  [data-lang="en"] { display: block; }
+
+  body[lang="ar"] [data-lang="en"] { display: none; }
+  body[lang="ar"] [data-lang="ar"] { display: block; }
+
+  /* for inline elements */
+  span[data-lang="ar"], a[data-lang="ar"], p[data-lang="ar"] { display: none; }
+  span[data-lang="en"], a[data-lang="en"], p[data-lang="en"] { display: inline; }
+
+  body[lang="ar"] span[data-lang="en"],
+  body[lang="ar"] a[data-lang="en"],
+  body[lang="ar"] p[data-lang="en"] { display: none; }
+
+  body[lang="ar"] span[data-lang="ar"],
+  body[lang="ar"] a[data-lang="ar"],
+  body[lang="ar"] p[data-lang="ar"] { display: inline; }
+
+  /* Smooth gold line on top */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    z-index: 200;
+  }
+</style>
+</head>
+<body lang="en">
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark">
+      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1L2 7v12h5v-6h6v6h5V7z"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <span>SafeHaven</span>
+      <span data-lang="en">Premium Rentals · Riyadh</span>
+      <span data-lang="ar">إيجارات مميزة · الرياض</span>
+    </div>
+  </a>
+
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#listings" data-lang="en">Listings</a><a href="#listings" data-lang="ar">الوحدات</a></li>
+      <li><a href="#about" data-lang="en">About</a><a href="#about" data-lang="ar">من نحن</a></li>
+      <li><a href="#contact" data-lang="en">Contact</a><a href="#contact" data-lang="ar">تواصل معنا</a></li>
+    </ul>
+    <button class="lang-toggle" onclick="toggleLang()">
+      <span data-lang="en">عربي</span>
+      <span data-lang="ar">English</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span data-lang="en">Riyadh's Trusted Property Partner</span>
+      <span data-lang="ar">شريكك الموثوق للإيجار في الرياض</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-lang="en">Homes you'll love.<br><em>Returns you'll trust.</em></span>
+      <span data-lang="ar">منازل تعشقها.<br><em>عوائد تثق بها.</em></span>
+    </h1>
+    <p class="hero-sub">
+      <span data-lang="en">We match discerning guests with premium furnished apartments across Riyadh — and help property owners generate consistent, maximised returns.</span>
+      <span data-lang="ar">نربط الضيوف المميزين بأفضل الشقق المؤثثة في الرياض، ونساعد أصحاب العقارات على تحقيق عوائد مستدامة وعالية.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#listings" class="btn-primary">
+        <span data-lang="en">View Listings</span>
+        <span data-lang="ar">استعرض الوحدات</span>
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <span data-lang="en">Get in Touch</span>
+        <span data-lang="ar">تواصل معنا</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">
+          <span data-lang="en">Years Experience</span>
+          <span data-lang="ar">سنوات خبرة</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">
+          <span data-lang="en">Units Managed</span>
+          <span data-lang="ar">وحدة مُدارة</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">
+          <span data-lang="en">Owner Satisfaction</span>
+          <span data-lang="ar">رضا أصحاب العقارات</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-grid">
+      <div class="hero-img-item">
+        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900&q=80" alt="Premium apartment living room Riyadh">
+        <div class="hero-badge">
+          <span data-lang="en">Riyadh · Olaya District</span>
+          <span data-lang="ar">الرياض · حي العليا</span>
+        </div>
+      </div>
+      <div class="hero-img-item">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Modern kitchen">
+      </div>
+      <div class="hero-img-item">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80" alt="Bedroom">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTINGS -->
+<section id="listings">
+  <div class="listings-header reveal">
+    <div>
+      <div class="section-tag">
+        <span data-lang="en">Available Now</span>
+        <span data-lang="ar">متاح الآن</span>
+      </div>
+      <h2 class="section-title">
+        <span data-lang="en">Our <em>Curated</em> Listings</span>
+        <span data-lang="ar">وحداتنا <em>المختارة</em></span>
+      </h2>
+    </div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards(this,'all')">
+        <span data-lang="en">All</span><span data-lang="ar">الكل</span>
+      </button>
+      <button class="filter-btn" onclick="filterCards(this,'studio')">Studio</button>
+      <button class="filter-btn" onclick="filterCards(this,'1br')">1 BR</button>
+      <button class="filter-btn" onclick="filterCards(this,'2br')">2 BR</button>
+      <button class="filter-btn" onclick="filterCards(this,'3br')">3 BR</button>
+    </div>
+  </div>
+
+  <div class="listings-grid" id="listingsGrid">
+
+    <!-- Card 1 -->
+    <div class="listing-card reveal" data-type="studio" onclick="openModal(0)">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80" alt="Studio Olaya">
+        <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-type">Studio</div>
+        <h3 class="card-title">Olaya Prestige Studio</h3>
+        <div class="card-location">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3z"/></svg>
+          <span data-lang="en">Olaya, Riyadh</span>
+          <span data-lang="ar">العليا، الرياض</span>
+        </div>
+        <div class="card-specs">
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="3" width="14" height="11" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M1 7h14" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span>45 m²</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"/><path d="M1 12h14"/></svg>
+            <span data-lang="en">1 Bath</span><span data-lang="ar">١ حمام</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+            <span data-lang="en">Fully Furnished</span><span data-lang="ar">مفروش بالكامل</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">4,500 <span>SAR / <span data-lang="en">month</span><span data-lang="ar">شهر</span></span></div>
+          <button class="card-cta">
+            <span data-lang="en">Details</span><span data-lang="ar">التفاصيل</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="listing-card reveal" data-type="1br" onclick="openModal(1)">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80" alt="1BR Al Malqa">
+        <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-type">1 Bedroom</div>
+        <h3 class="card-title">Al Malqa Garden View</h3>
+        <div class="card-location">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3z"/></svg>
+          <span data-lang="en">Al Malqa, Riyadh</span>
+          <span data-lang="ar">الملقا، الرياض</span>
+        </div>
+        <div class="card-specs">
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="11" rx="1"/><path d="M1 7h14"/></svg>
+            <span>78 m²</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"/><path d="M1 12h14"/></svg>
+            <span data-lang="en">2 Baths</span><span data-lang="ar">٢ حمام</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+            <span data-lang="en">Fully Furnished</span><span data-lang="ar">مفروش بالكامل</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">7,200 <span>SAR / <span data-lang="en">month</span><span data-lang="ar">شهر</span></span></div>
+          <button class="card-cta">
+            <span data-lang="en">Details</span><span data-lang="ar">التفاصيل</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="listing-card reveal" data-type="2br" onclick="openModal(2)">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=700&q=80" alt="2BR Diplomatic">
+        <div class="card-badge" style="background:var(--ink);"><span data-lang="en">New Listing</span><span data-lang="ar">جديد</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-type">2 Bedrooms</div>
+        <h3 class="card-title">Diplomatic Quarter Flat</h3>
+        <div class="card-location">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3z"/></svg>
+          <span data-lang="en">Diplomatic Quarter, Riyadh</span>
+          <span data-lang="ar">الحي الدبلوماسي، الرياض</span>
+        </div>
+        <div class="card-specs">
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="11" rx="1"/><path d="M1 7h14"/></svg>
+            <span>120 m²</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"/><path d="M1 12h14"/></svg>
+            <span data-lang="en">2 Baths</span><span data-lang="ar">٢ حمام</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+            <span data-lang="en">Fully Furnished</span><span data-lang="ar">مفروش بالكامل</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">11,500 <span>SAR / <span data-lang="en">month</span><span data-lang="ar">شهر</span></span></div>
+          <button class="card-cta">
+            <span data-lang="en">Details</span><span data-lang="ar">التفاصيل</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="listing-card reveal" data-type="3br" onclick="openModal(3)">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=80" alt="3BR Villa Suite">
+        <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-type">3 Bedrooms</div>
+        <h3 class="card-title">Al Nakheel Penthouse Suite</h3>
+        <div class="card-location">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3z"/></svg>
+          <span data-lang="en">Al Nakheel, Riyadh</span>
+          <span data-lang="ar">النخيل، الرياض</span>
+        </div>
+        <div class="card-specs">
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="11" rx="1"/><path d="M1 7h14"/></svg>
+            <span>195 m²</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"/><path d="M1 12h14"/></svg>
+            <span data-lang="en">3 Baths</span><span data-lang="ar">٣ حمامات</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+            <span data-lang="en">Fully Furnished</span><span data-lang="ar">مفروش بالكامل</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">18,000 <span>SAR / <span data-lang="en">month</span><span data-lang="ar">شهر</span></span></div>
+          <button class="card-cta">
+            <span data-lang="en">Details</span><span data-lang="ar">التفاصيل</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="listing-card reveal" data-type="1br" onclick="openModal(4)">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80" alt="1BR Sulai">
+        <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-type">1 Bedroom</div>
+        <h3 class="card-title">Sulaimaniyah City View</h3>
+        <div class="card-location">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3z"/></svg>
+          <span data-lang="en">Sulaimaniyah, Riyadh</span>
+          <span data-lang="ar">السليمانية، الرياض</span>
+        </div>
+        <div class="card-specs">
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="11" rx="1"/><path d="M1 7h14"/></svg>
+            <span>82 m²</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"/><path d="M1 12h14"/></svg>
+            <span data-lang="en">1 Bath</span><span data-lang="ar">١ حمام</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+            <span data-lang="en">Fully Furnished</span><span data-lang="ar">مفروش بالكامل</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">8,000 <span>SAR / <span data-lang="en">month</span><span data-lang="ar">شهر</span></span></div>
+          <button class="card-cta">
+            <span data-lang="en">Details</span><span data-lang="ar">التفاصيل</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="listing-card reveal" data-type="2br" onclick="openModal(5)">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1560185127-6a30a1a9c5e5?w=700&q=80" alt="2BR King Fahd">
+        <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
+      </div>
+      <div class="card-body">
+        <div class="card-type">2 Bedrooms</div>
+        <h3 class="card-title">King Fahd Road Residence</h3>
+        <div class="card-location">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3z"/></svg>
+          <span data-lang="en">King Fahd Rd, Riyadh</span>
+          <span data-lang="ar">طريق الملك فهد، الرياض</span>
+        </div>
+        <div class="card-specs">
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="11" rx="1"/><path d="M1 7h14"/></svg>
+            <span>135 m²</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"/><path d="M1 12h14"/></svg>
+            <span data-lang="en">3 Baths</span><span data-lang="ar">٣ حمامات</span>
+          </div>
+          <div class="spec">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+            <span data-lang="en">Fully Furnished</span><span data-lang="ar">مفروش بالكامل</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">13,500 <span>SAR / <span data-lang="en">month</span><span data-lang="ar">شهر</span></span></div>
+          <button class="card-cta">
+            <span data-lang="en">Details</span><span data-lang="ar">التفاصيل</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left reveal">
+    <div class="section-tag">
+      <span data-lang="en">Who We Are</span>
+      <span data-lang="ar">من نحن</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en">Eight years of <em>excellence</em> in Riyadh</span>
+      <span data-lang="ar">ثمانية أعوام من <em>التميز</em> في الرياض</span>
+    </h2>
+    <p class="section-sub">
+      <span data-lang="en">SafeHaven was built on a simple belief: that property management should be transparent, professional, and genuinely profitable for owners. Over 8 years, we have managed more than 50 units across Riyadh's most sought-after neighbourhoods, delivering consistently strong returns for our hosts.</span>
+      <span data-lang="ar">بُنيت سيف هيفن على مبدأ بسيط: أن إدارة العقارات يجب أن تكون شفافة واحترافية ومربحة حقاً لأصحابها. خلال 8 سنوات، أدرنا أكثر من 50 وحدة في أرقى أحياء الرياض، وحققنا عوائد مستمرة وقوية لمضيفينا.</span>
+    </p>
+    <div class="about-features">
+      <div class="about-feat">
+        <svg class="about-feat-icon" viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7z"/></svg>
+        <h4>
+          <span data-lang="en">International Team</span>
+          <span data-lang="ar">فريق دولي</span>
+        </h4>
+        <p>
+          <span data-lang="en">A diverse, multilingual team with strong international hospitality background.</span>
+          <span data-lang="ar">فريق متنوع متعدد اللغات بخلفية ضيافة دولية قوية.</span>
+        </p>
+      </div>
+      <div class="about-feat">
+        <svg class="about-feat-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+        <h4>
+          <span data-lang="en">Revenue Focused</span>
+          <span data-lang="ar">عوائد مميزة</span>
+        </h4>
+        <p>
+          <span data-lang="en">We optimise occupancy and pricing to maximise income for every owner we serve.</span>
+          <span data-lang="ar">نُحسّن معدلات الإشغال والتسعير لتعظيم الدخل لكل مالك نتعامل معه.</span>
+        </p>
+      </div>
+      <div class="about-feat">
+        <svg class="about-feat-icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>
+          <span data-lang="en">Fully Managed</span>
+          <span data-lang="ar">إدارة متكاملة</span>
+        </h4>
+        <p>
+          <span data-lang="en">End-to-end property management — from listing to guest check-out, we handle it all.</span>
+          <span data-lang="ar">إدارة عقارية شاملة من الإدراج حتى مغادرة الضيف، نتولى كل شيء.</span>
+        </p>
+      </div>
+      <div class="about-feat">
+        <svg class="about-feat-icon" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <h4>
+          <span data-lang="en">50+ Units in Riyadh</span>
+          <span data-lang="ar">أكثر من 50 وحدة في الرياض</span>
+        </h4>
+        <p>
+          <span data-lang="en">A proven track record across Riyadh's most sought-after residential districts.</span>
+          <span data-lang="ar">سجل حافل في أرقى الأحياء السكنية بالرياض.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="about-right reveal">
+    <div class="about-img-stack">
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Premium Riyadh apartment interior">
+      </div>
+      <div class="about-img-accent">
+        <img src="https://images.unsplash.com/photo-1560448075-cbc16bb4af8e?w=600&q=80" alt="Team at work">
+      </div>
+      <div class="about-years">
+        <div class="about-years-num">8+</div>
+        <div class="about-years-text">
+          <span data-lang="en">Years in Riyadh</span>
+          <span data-lang="ar">سنوات في الرياض</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header reveal">
+    <div class="section-tag">
+      <span data-lang="en">How It Works</span>
+      <span data-lang="ar">كيف نعمل</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en">Simple. <em>Transparent.</em> Rewarding.</span>
+      <span data-lang="ar">بسيط. <em>شفاف.</em> مجزٍ.</span>
+    </h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step reveal">
+      <div class="step-num">01</div>
+      <h3 class="step-title">
+        <span data-lang="en">Browse & Select</span>
+        <span data-lang="ar">تصفح واختر</span>
+      </h3>
+      <p class="step-desc">
+        <span data-lang="en">Explore our curated inventory of premium furnished apartments across Riyadh's most desirable districts.</span>
+        <span data-lang="ar">استعرض مجموعتنا المختارة من الشقق المفروشة الراقية في أرقى أحياء الرياض.</span>
+      </p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">02</div>
+      <h3 class="step-title">
+        <span data-lang="en">Contact Our Team</span>
+        <span data-lang="ar">تواصل مع فريقنا</span>
+      </h3>
+      <p class="step-desc">
+        <span data-lang="en">Our multilingual team is available to answer your questions, arrange viewings, and guide you through the rental process.</span>
+        <span data-lang="ar">فريقنا متعدد اللغات جاهز للإجابة على استفساراتك وترتيب الجولات وإرشادك خلال عملية الاستئجار.</span>
+      </p>
+    </div>
+    <div class="process-step reveal">
+      <div class="step-num">03</div>
+      <h3 class="step-title">
+        <span data-lang="en">Move In &amp; Enjoy</span>
+        <span data-lang="ar">انتقل وانعم</span>
+      </h3>
+      <p class="step-desc">
+        <span data-lang="en">All our units are fully furnished and ready to move in. We take care of everything so you can focus on living.</span>
+        <span data-lang="ar">جميع وحداتنا مفروشة بالكامل وجاهزة للسكن. نتولى كل شيء لتتفرغ لحياتك.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info reveal">
+    <div class="section-tag">
+      <span data-lang="en">Get in Touch</span>
+      <span data-lang="ar">تواصل معنا</span>
+    </div>
+    <h2 class="section-title">
+      <span data-lang="en">We're ready<br>to <em>help you.</em></span>
+      <span data-lang="ar">نحن هنا<br><em>لمساعدتك.</em></span>
+    </h2>
+    <p class="section-sub">
+      <span data-lang="en">Whether you're looking for your next home or want to list your property with us, reach out and our team will respond promptly.</span>
+      <span data-lang="ar">سواء كنت تبحث عن منزلك القادم أو تريد إدراج عقارك معنا، تواصل معنا وسيرد فريقنا بسرعة.</span>
+    </p>
+
+    <div class="contact-detail">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.72 12a19.79 19.79 0 0 1-3.07-8.67 2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
+      <div class="contact-detail-text">
+        <h4><span data-lang="en">Call or WhatsApp</span><span data-lang="ar">اتصل أو واتساب</span></h4>
+        <a href="tel:+966500000000">+966 50 000 0000</a>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <div class="contact-detail-text">
+        <h4>Email</h4>
+        <a href="mailto:hello@safehavenhq.co">hello@safehavenhq.co</a>
+      </div>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+      </div>
+      <div class="contact-detail-text">
+        <h4><span data-lang="en">Based In</span><span data-lang="ar">موقعنا</span></h4>
+        <p>
+          <span data-lang="en">Riyadh, Saudi Arabia</span>
+          <span data-lang="ar">الرياض، المملكة العربية السعودية</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-map-placeholder reveal">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    <span>
+      <span data-lang="en">Riyadh, Saudi Arabia</span>
+      <span data-lang="ar">الرياض، المملكة العربية السعودية</span>
+    </span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 1L2 7v12h5v-6h6v6h5V7z"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span>SafeHaven</span>
+          <span style="color:rgba(255,255,255,0.4);">
+            <span data-lang="en">Premium Rentals · Riyadh</span>
+            <span data-lang="ar">إيجارات مميزة · الرياض</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <nav class="footer-links">
+      <a href="#listings"><span data-lang="en">Listings</span><span data-lang="ar">الوحدات</span></a>
+      <a href="#about"><span data-lang="en">About Us</span><span data-lang="ar">من نحن</span></a>
+      <a href="#process"><span data-lang="en">How It Works</span><span data-lang="ar">كيف نعمل</span></a>
+      <a href="#contact"><span data-lang="en">Contact</span><span data-lang="ar">تواصل</span></a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">
+      <span data-lang="en">&copy; 2025 SafeHaven HQ. All rights reserved.</span>
+      <span data-lang="ar">&copy; 2025 سيف هيفن HQ. جميع الحقوق محفوظة.</span>
+    </span>
+    <span class="footer-domain">safehavenhq.co</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">
+      <svg viewBox="0 0 16 16" fill="none" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+    </button>
+    <div class="modal-gallery">
+      <img id="modalImg" src="" alt="">
+    </div>
+    <div class="modal-body">
+      <div class="modal-type" id="modalType"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-loc" id="modalLoc">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3z"/></svg>
+        <span id="modalLocText"></span>
+      </div>
+      <div class="modal-specs" id="modalSpecs"></div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-contact">
+        <div class="modal-contact-text">
+          <p><span data-lang="en">Enquire About This Property</span><span data-lang="ar">استفسر عن هذا العقار</span></p>
+          <p id="modalPhone">+966 50 000 0000</p>
+        </div>
+        <a href="tel:+966500000000" class="modal-contact-btn">
+          <span data-lang="en">Call Now</span>
+          <span data-lang="ar">اتصل الآن</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const lang = () => document.body.getAttribute('lang');
+
+const listings = [
+  {
+    img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=85',
+    type: { en: 'Studio', ar: 'استوديو' },
+    title: { en: 'Olaya Prestige Studio', ar: 'استوديو العليا المميز' },
+    loc: { en: 'Olaya District, Riyadh', ar: 'حي العليا، الرياض' },
+    specs: [
+      { label: { en: 'Size', ar: 'المساحة' }, val: '45 m²' },
+      { label: { en: 'Type', ar: 'النوع' }, val: { en: 'Studio', ar: 'استوديو' } },
+      { label: { en: 'Bathrooms', ar: 'الحمامات' }, val: '1' },
+      { label: { en: 'Furnishing', ar: 'التأثيث' }, val: { en: 'Full', ar: 'كامل' } },
+      { label: { en: 'Price', ar: 'السعر' }, val: '4,500 SAR / mo' }
+    ],
+    desc: {
+      en: 'A sleek, fully furnished studio in the heart of Olaya — Riyadh\'s premier business district. Features high-end finishes, a fully equipped kitchen, fast WiFi, and building amenities including a gym and parking. Ideal for business travellers and professionals.',
+      ar: 'استوديو أنيق مفروش بالكامل في قلب العليا — الحي التجاري الأول في الرياض. يتميز بتشطيبات راقية ومطبخ مجهز ووايفاي سريع ومرافق البناء بما فيها صالة رياضية وموقف سيارات. مثالي لرجال الأعمال والمهنيين.'
+    }
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&q=85',
+    type: { en: '1 Bedroom', ar: 'غرفة نوم واحدة' },
+    title: { en: 'Al Malqa Garden View', ar: 'الملقا - إطلالة على الحديقة' },
+    loc: { en: 'Al Malqa, Riyadh', ar: 'الملقا، الرياض' },
+    specs: [
+      { label: { en: 'Size', ar: 'المساحة' }, val: '78 m²' },
+      { label: { en: 'Bedrooms', ar: 'الغرف' }, val: '1' },
+      { label: { en: 'Bathrooms', ar: 'الحمامات' }, val: '2' },
+      { label: { en: 'Furnishing', ar: 'التأثيث' }, val: { en: 'Full', ar: 'كامل' } },
+      { label: { en: 'Price', ar: 'السعر' }, val: '7,200 SAR / mo' }
+    ],
+    desc: {
+      en: 'A beautifully designed one-bedroom apartment in the sought-after Al Malqa neighbourhood. Overlooks a lush private garden. The apartment features a spacious living area, modern kitchen, and two bathrooms. Walking distance to premium dining and retail.',
+      ar: 'شقة من غرفة نوم واحدة مصممة بعناية في حي الملقا المرغوب. تطل على حديقة خضراء خاصة. تتميز الشقة بغرفة معيشة واسعة ومطبخ عصري وحمامين. على مسافة قريبة من مطاعم ومراكز تسوق راقية.'
+    }
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=85',
+    type: { en: '2 Bedrooms', ar: 'غرفتا نوم' },
+    title: { en: 'Diplomatic Quarter Flat', ar: 'شقة الحي الدبلوماسي' },
+    loc: { en: 'Diplomatic Quarter, Riyadh', ar: 'الحي الدبلوماسي، الرياض' },
+    specs: [
+      { label: { en: 'Size', ar: 'المساحة' }, val: '120 m²' },
+      { label: { en: 'Bedrooms', ar: 'الغرف' }, val: '2' },
+      { label: { en: 'Bathrooms', ar: 'الحمامات' }, val: '2' },
+      { label: { en: 'Furnishing', ar: 'التأثيث' }, val: { en: 'Full', ar: 'كامل' } },
+      { label: { en: 'Price', ar: 'السعر' }, val: '11,500 SAR / mo' }
+    ],
+    desc: {
+      en: 'A refined two-bedroom apartment nestled in Riyadh\'s prestigious Diplomatic Quarter. Quiet, leafy surroundings with excellent security. Features generous living spaces, a gourmet kitchen, and access to the DQ\'s world-class parks and amenities.',
+      ar: 'شقة راقية من غرفتي نوم في الحي الدبلوماسي المرموق بالرياض. محيط هادئ مع أشجار وأمن ممتاز. تتميز بمساحات معيشة واسعة ومطبخ فاخر وإمكانية الوصول إلى حدائق ومرافق الحي الدبلوماسي.'
+    }
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=85',
+    type: { en: '3 Bedrooms', ar: 'ثلاث غرف نوم' },
+    title: { en: 'Al Nakheel Penthouse Suite', ar: 'بنتهاوس النخيل' },
+    loc: { en: 'Al Nakheel, Riyadh', ar: 'النخيل، الرياض' },
+    specs: [
+      { label: { en: 'Size', ar: 'المساحة' }, val: '195 m²' },
+      { label: { en: 'Bedrooms', ar: 'الغرف' }, val: '3' },
+      { label: { en: 'Bathrooms', ar: 'الحمامات' }, val: '3' },
+      { label: { en: 'Furnishing', ar: 'التأثيث' }, val: { en: 'Full', ar: 'كامل' } },
+      { label: { en: 'Price', ar: 'السعر' }, val: '18,000 SAR / mo' }
+    ],
+    desc: {
+      en: 'A statement penthouse suite offering panoramic views over Al Nakheel. Three generous bedrooms, a master suite with walk-in wardrobe, open-plan living and dining, a private terrace, and high-end furnishings throughout. The ultimate Riyadh residence.',
+      ar: 'بنتهاوس استثنائي يوفر إطلالات بانورامية على النخيل. ثلاث غرف نوم واسعة، وجناح رئيسي بغرفة ملابس، وصالة ومطعم مفتوحة، وتراس خاص، وأثاث فاخر في كل مكان. السكن الأمثل في الرياض.'
+    }
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=85',
+    type: { en: '1 Bedroom', ar: 'غرفة نوم واحدة' },
+    title: { en: 'Sulaimaniyah City View', ar: 'السليمانية - إطلالة على المدينة' },
+    loc: { en: 'Sulaimaniyah, Riyadh', ar: 'السليمانية، الرياض' },
+    specs: [
+      { label: { en: 'Size', ar: 'المساحة' }, val: '82 m²' },
+      { label: { en: 'Bedrooms', ar: 'الغرف' }, val: '1' },
+      { label: { en: 'Bathrooms', ar: 'الحمامات' }, val: '1' },
+      { label: { en: 'Furnishing', ar: 'التأثيث' }, val: { en: 'Full', ar: 'كامل' } },
+      { label: { en: 'Price', ar: 'السعر' }, val: '8,000 SAR / mo' }
+    ],
+    desc: {
+      en: 'A stylishly furnished one-bedroom in the vibrant Sulaimaniyah district. Upper-floor city views, contemporary interior design, and a location that keeps you close to Riyadh\'s best restaurants and cultural venues.',
+      ar: 'غرفة نوم واحدة مفروشة بأناقة في حي السليمانية النابض بالحياة. إطلالات على المدينة من الطوابق العليا، وتصميم داخلي عصري، وموقع يبقيك قريباً من أفضل مطاعم الرياض والمعالم الثقافية.'
+    }
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1560185127-6a30a1a9c5e5?w=1200&q=85',
+    type: { en: '2 Bedrooms', ar: 'غرفتا نوم' },
+    title: { en: 'King Fahd Road Residence', ar: 'مسكن طريق الملك فهد' },
+    loc: { en: 'King Fahd Road, Riyadh', ar: 'طريق الملك فهد، الرياض' },
+    specs: [
+      { label: { en: 'Size', ar: 'المساحة' }, val: '135 m²' },
+      { label: { en: 'Bedrooms', ar: 'الغرف' }, val: '2' },
+      { label: { en: 'Bathrooms', ar: 'الحمامات' }, val: '3' },
+      { label: { en: 'Furnishing', ar: 'التأثيث' }, val: { en: 'Full', ar: 'كامل' } },
+      { label: { en: 'Price', ar: 'السعر' }, val: '13,500 SAR / mo' }
+    ],
+    desc: {
+      en: 'A prestige two-bedroom residence on Riyadh\'s iconic King Fahd Road. Impeccably furnished, with a generous layout suited to both couples and small families. Building facilities include a rooftop pool, concierge service, and secure underground parking.',
+      ar: 'مسكن راقي من غرفتي نوم على طريق الملك فهد الشهير في الرياض. مفروش بعناية فائقة ومساحة مناسبة للأزواج والعائلات الصغيرة. مرافق المبنى تشمل حمام سباحة على السطح وخدمة الكونسيرج وموقف سيارات آمن تحت الأرض.'
+    }
+  }
+];
+
+function openModal(index) {
+  const l = lang();
+  const d = listings[index];
+  document.getElementById('modalImg').src = d.img;
+  document.getElementById('modalType').textContent = typeof d.type === 'string' ? d.type : d.type[l];
+  document.getElementById('modalTitle').textContent = typeof d.title === 'string' ? d.title : d.title[l];
+  document.getElementById('modalLocText').textContent = typeof d.loc === 'string' ? d.loc : d.loc[l];
+  document.getElementById('modalDesc').textContent = typeof d.desc === 'string' ? d.desc : d.desc[l];
+
+  const specsEl = document.getElementById('modalSpecs');
+  specsEl.innerHTML = d.specs.map(s => {
+    const label = typeof s.label === 'string' ? s.label : s.label[l];
+    const val = typeof s.val === 'string' ? s.val : s.val[l];
+    return `<div class="modal-spec"><div class="modal-spec-label">${label}</div><div class="modal-spec-val">${val}</div></div>`;
+  }).join('');
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function filterCards(btn, type) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.listing-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+  });
+}
+
+function toggleLang() {
+  const current = lang();
+  const next = current === 'en' ? 'ar' : 'en';
+  document.body.setAttribute('lang', next);
+  document.documentElement.setAttribute('lang', next);
+  document.documentElement.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger cards
+document.querySelectorAll('.listing-card').forEach((card, i) => {
+  card.style.transitionDelay = (i % 3) * 0.08 + 's';
+});
+
+// Keyboard close modal
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
