@@ -610,6 +610,58 @@
     object-fit: cover;
   }
 
+  .gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(26,23,20,0.6);
+    border: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s;
+  }
+  .gallery-arrow:hover { background: rgba(184,151,90,0.85); }
+  .gallery-arrow svg { width: 20px; height: 20px; stroke: #fff; }
+  .gallery-prev { left: 12px; }
+  .gallery-next { right: 12px; }
+  .gallery-counter {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(26,23,20,0.65);
+    color: #fff;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+  }
+  .gallery-thumbs {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px;
+    overflow-x: auto;
+    background: linear-gradient(transparent, rgba(26,23,20,0.7));
+    scrollbar-width: none;
+  }
+  .gallery-thumbs::-webkit-scrollbar { display: none; }
+  .gallery-thumb {
+    width: 52px;
+    height: 38px;
+    object-fit: cover;
+    flex-shrink: 0;
+    cursor: pointer;
+    opacity: 0.55;
+    border: 2px solid transparent;
+    transition: opacity 0.2s, border-color 0.2s;
+  }
+  .gallery-thumb.active { opacity: 1; border-color: var(--gold); }
+
   .modal-body {
     padding: 40px 44px;
   }
@@ -1227,7 +1279,7 @@
     <!-- Card 1: B4 -->
     <div class="listing-card reveal" data-type="2br" onclick="openModal(0)">
       <div class="card-img">
-        <img src="images/b4/1.jpg" alt="B4 Apartment">
+        <img src="images/b4/IMG-20250218-WA0118.jpg" alt="B4 Apartment">
         <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
       </div>
       <div class="card-body">
@@ -1263,7 +1315,7 @@
     <!-- Card 2: Sulimaniyah -->
     <div class="listing-card reveal" data-type="1br" onclick="openModal(1)">
       <div class="card-img">
-        <img src="images/sulimaniyah/1.jpg" alt="Sulimaniyah Apartment">
+        <img src="images/sulimaniyah/IMG-20250602-WA0023.jpg" alt="Sulimaniyah Apartment">
         <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
       </div>
       <div class="card-body">
@@ -1299,7 +1351,7 @@
     <!-- Card 3: Apartment 20 -->
     <div class="listing-card reveal" data-type="1br" onclick="openModal(2)">
       <div class="card-img">
-        <img src="images/apartment-20/1.jpg" alt="Apartment 20">
+        <img src="images/apartment-20/IMG-20250619-WA0041.jpg" alt="Apartment 20">
         <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
       </div>
       <div class="card-body">
@@ -1335,7 +1387,7 @@
     <!-- Card 4: Apartment 21 -->
     <div class="listing-card reveal" data-type="1br" onclick="openModal(3)">
       <div class="card-img">
-        <img src="images/apartment-21/1.jpg" alt="Apartment 21">
+        <img src="images/apartment-21/IMG-20250619-WA0043.jpg" alt="Apartment 21">
         <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
       </div>
       <div class="card-body">
@@ -1371,7 +1423,7 @@
     <!-- Card 5: 2002 -->
     <div class="listing-card reveal" data-type="studio" onclick="openModal(4)">
       <div class="card-img">
-        <img src="images/2002/1.jpg" alt="2002 Studio">
+        <img src="images/2002/IMG-20250619-WA0005.jpg" alt="2002 Studio">
         <div class="card-badge"><span data-lang="en">Available</span><span data-lang="ar">متاح</span></div>
       </div>
       <div class="card-body">
@@ -1646,6 +1698,14 @@
     </button>
     <div class="modal-gallery">
       <img id="modalImg" src="" alt="">
+      <button class="gallery-arrow gallery-prev" onclick="galleryPrev()" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <button class="gallery-arrow gallery-next" onclick="galleryNext()" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,6 15,12 9,18"/></svg>
+      </button>
+      <div class="gallery-counter" id="galleryCounter">1 / 1</div>
+      <div class="gallery-thumbs" id="galleryThumbs"></div>
     </div>
     <div class="modal-body">
       <div class="modal-type" id="modalType"></div>
@@ -1675,7 +1735,21 @@ const lang = () => document.body.getAttribute('lang');
 
 const listings = [
   {
-    img: 'images/b4/1.jpg',
+    imgs: [
+      'images/b4/IMG-20250218-WA0118.jpg',
+      'images/b4/IMG-20250218-WA0119.jpg',
+      'images/b4/IMG-20250218-WA0120.jpg',
+      'images/b4/IMG-20250218-WA0122.jpg',
+      'images/b4/IMG-20250218-WA0125.jpg',
+      'images/b4/IMG-20250218-WA0127.jpg',
+      'images/b4/IMG-20250218-WA0128.jpg',
+      'images/b4/IMG-20250218-WA0130.jpg',
+      'images/b4/IMG-20250218-WA0131.jpg',
+      'images/b4/IMG-20250218-WA0132.jpg',
+      'images/b4/IMG-20250218-WA0133.jpg',
+      'images/b4/IMG-20250218-WA0134.jpg',
+      'images/b4/IMG-20250218-WA0135.jpg'
+    ],
     type: { en: '2 Bedrooms', ar: 'غرفتان نوم' },
     title: { en: 'B4', ar: 'B4' },
     loc: { en: 'Al Malqa, Riyadh', ar: 'الملقا، الرياض' },
@@ -1689,7 +1763,26 @@ const listings = [
     ]
   },
   {
-    img: 'images/sulimaniyah/1.jpg',
+    imgs: [
+      'images/sulimaniyah/IMG-20250602-WA0023.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0024.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0068.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0072.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0074.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0075.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0079.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0080.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0081.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0082.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0083.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0084.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0086.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0089.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0090.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0093.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0095.jpg',
+      'images/sulimaniyah/IMG-20250602-WA0096.jpg'
+    ],
     type: { en: '1 Bedroom', ar: 'غرفة نوم' },
     title: { en: 'Sulimaniyah', ar: 'السليمانية' },
     loc: { en: 'As Sulimaniyah, Riyadh', ar: 'السليمانية، الرياض' },
@@ -1703,7 +1796,18 @@ const listings = [
     ]
   },
   {
-    img: 'images/apartment-20/1.jpg',
+    imgs: [
+      'images/apartment-20/IMG-20250619-WA0041.jpg',
+      'images/apartment-20/IMG-20250619-WA0042.jpg',
+      'images/apartment-20/IMG-20250619-WA0060.jpg',
+      'images/apartment-20/IMG-20250619-WA0063.jpg',
+      'images/apartment-20/IMG-20250619-WA0064.jpg',
+      'images/apartment-20/IMG-20250619-WA0067.jpg',
+      'images/apartment-20/IMG-20250619-WA0068.jpg',
+      'images/apartment-20/IMG-20250619-WA0070.jpg',
+      'images/apartment-20/_storage_emulated_999_Pictures_WhatsApp_IMG-20250619-WA0075.jpg',
+      'images/apartment-20/IMG-20250619-WA0076.jpg'
+    ],
     type: { en: '1 Bedroom', ar: 'غرفة نوم' },
     title: { en: 'Apartment 20', ar: 'شقة 20' },
     loc: { en: 'Al Aqeeq, Riyadh', ar: 'العقيق، الرياض' },
@@ -1717,7 +1821,16 @@ const listings = [
     ]
   },
   {
-    img: 'images/apartment-21/1.jpg',
+    imgs: [
+      'images/apartment-21/IMG-20250619-WA0043.jpg',
+      'images/apartment-21/IMG-20250619-WA0046.jpg',
+      'images/apartment-21/IMG-20250619-WA0047.jpg',
+      'images/apartment-21/IMG-20250619-WA0048.jpg',
+      'images/apartment-21/IMG-20250619-WA0050.jpg',
+      'images/apartment-21/IMG-20250619-WA0051.jpg',
+      'images/apartment-21/IMG-20250619-WA0055.jpg',
+      'images/apartment-21/IMG-20250619-WA0057.jpg'
+    ],
     type: { en: '1 Bedroom', ar: 'غرفة نوم' },
     title: { en: 'Apartment 21', ar: 'شقة 21' },
     loc: { en: 'Al Aqeeq, Riyadh', ar: 'العقيق، الرياض' },
@@ -1731,7 +1844,18 @@ const listings = [
     ]
   },
   {
-    img: 'images/2002/1.jpg',
+    imgs: [
+      'images/2002/IMG-20250619-WA0005.jpg',
+      'images/2002/IMG-20250619-WA0006.jpg',
+      'images/2002/IMG-20250619-WA0007.jpg',
+      'images/2002/IMG-20250619-WA0010.jpg',
+      'images/2002/IMG-20250619-WA0011.jpg',
+      'images/2002/IMG-20250619-WA0018.jpg',
+      'images/2002/IMG-20250619-WA0019.jpg',
+      'images/2002/IMG-20250619-WA0020.jpg',
+      'images/2002/IMG-20250619-WA0021.jpg',
+      'images/2002/IMG-20250619-WA0023.jpg'
+    ],
     type: { en: 'Studio', ar: 'استوديو' },
     title: { en: '2002', ar: '2002' },
     loc: { en: 'Al Malqa, Riyadh', ar: 'الملقا، الرياض' },
@@ -1746,29 +1870,73 @@ const listings = [
   }
 ];
 
+var galleryImgs = [];
+var galleryIndex = 0;
+
 function openModal(index) {
-  const l = lang();
-  const d = listings[index];
-  document.getElementById('modalImg').src = d.img;
+  var l = lang();
+  var d = listings[index];
+
+  galleryImgs = d.imgs && d.imgs.length ? d.imgs : [];
+  galleryIndex = 0;
+  renderGallery();
+
   document.getElementById('modalType').textContent = typeof d.type === 'string' ? d.type : d.type[l];
   document.getElementById('modalTitle').textContent = typeof d.title === 'string' ? d.title : d.title[l];
   document.getElementById('modalLocText').textContent = typeof d.loc === 'string' ? d.loc : d.loc[l];
   document.getElementById('modalDesc').textContent = typeof d.desc === 'string' ? d.desc : d.desc[l];
 
-  const specsEl = document.getElementById('modalSpecs');
-  specsEl.innerHTML = d.specs.map(s => {
-    const label = typeof s.label === 'string' ? s.label : s.label[l];
-    const val = typeof s.val === 'string' ? s.val : s.val[l];
-    return `<div class="modal-spec"><div class="modal-spec-label">${label}</div><div class="modal-spec-val">${val}</div></div>`;
+  var specsEl = document.getElementById('modalSpecs');
+  specsEl.innerHTML = d.specs.map(function(s) {
+    var label = typeof s.label === 'string' ? s.label : s.label[l];
+    var val = typeof s.val === 'string' ? s.val : s.val[l];
+    return '<div class="modal-spec"><div class="modal-spec-label">' + label + '</div><div class="modal-spec-val">' + val + '</div></div>';
   }).join('');
 
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
+function renderGallery() {
+  var img = document.getElementById('modalImg');
+  var counter = document.getElementById('galleryCounter');
+  var thumbsEl = document.getElementById('galleryThumbs');
+  if (!galleryImgs.length) return;
+  img.src = galleryImgs[galleryIndex];
+  counter.textContent = (galleryIndex + 1) + ' / ' + galleryImgs.length;
+  thumbsEl.innerHTML = galleryImgs.map(function(src, i) {
+    return '<img src="' + src + '" class="gallery-thumb' + (i === galleryIndex ? ' active' : '') + '" onclick="goToGallery(' + i + ')" alt="Photo ' + (i + 1) + '">';
+  }).join('');
+  var prevBtn = document.querySelector('.gallery-prev');
+  var nextBtn = document.querySelector('.gallery-next');
+  if (prevBtn) prevBtn.style.display = galleryImgs.length > 1 ? '' : 'none';
+  if (nextBtn) nextBtn.style.display = galleryImgs.length > 1 ? '' : 'none';
+}
+
+function galleryPrev() {
+  galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
+  renderGallery();
+  var active = document.querySelector('#galleryThumbs .active');
+  if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+function galleryNext() {
+  galleryIndex = (galleryIndex + 1) % galleryImgs.length;
+  renderGallery();
+  var active = document.querySelector('#galleryThumbs .active');
+  if (active) active.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+function goToGallery(i) {
+  galleryIndex = i;
+  renderGallery();
+}
+
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
   document.body.style.overflow = '';
+  galleryImgs = [];
+  galleryIndex = 0;
 }
 
 function closeModalOnOverlay(e) {
